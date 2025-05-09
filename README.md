@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💬 ChatGPT-UI
 
-## Getting Started
+A sleek and responsive user interface for interacting with OpenAI's ChatGPT API. This project provides a customizable and developer-friendly frontend to simulate ChatGPT-style conversations.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- 🧠 Chat interface powered by OpenAI’s API (ChatGPT)
+- ✨ Modern, responsive UI built with React (and Tailwind)
+- 💾 Message history and context retention
+- 🎨 Dark/light mode toggle
+- 🔐 API key authentication (optional)
+- 📜 Markdown and code block support
+- 🧩 Easily extensible and customizable
+
+---
+
+## 📸 Demo
+
+![ChatGPT-UI](<Screenshot 2025-05-09 at 4.05.52 PM.png>)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js
+- **Styling:** Tailwind CSS
+- **API:** OpenAI GPT-3.5 / GPT-4
+- **State Management:** React Context
+
+---
+
+## 🔧 Setup Instructions
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/your-username/chatgpt-ui.git
+   cd chatgpt-ui
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Configure environment**
+
+   Create a `.env` file in the root directory:
+
+   ```
+   VITE_OPENAI_API_KEY=your-api-key-here
+   ```
+
+4. **Run the development server**
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open your browser at `http://localhost:3000`
+
+---
+
+## 🧪 Testing
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+chatgpt-ui/
+├── public/
+├── src/
+│   ├── api/
+│   ├── components/
+│   ├── utils/
+│   ├── layout.jsx
+│   └── page.jsx
+├── .env
+├── package.json
+└── README.md
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧩 Future Enhancements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Chat export (PDF/Markdown)
+- Multi-session support
+- Voice input/output
+- Plugin system for tools and workflows
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🤝 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please open an issue or submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repo
+2. Create a new branch (`git checkout -b feature-name`)
+3. Commit your changes (`git commit -am 'Add feature'`)
+4. Push to the branch (`git push origin feature-name`)
+5. Create a new Pull Request
+
+---
+
+## 📜 License
+
+MIT License © \[Subham Mishra]

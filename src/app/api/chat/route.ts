@@ -1,6 +1,6 @@
-import { OpenAI } from 'openai';
+// import { OpenAI } from 'openai';
 
-export async function POST(req: Request) {
+export async function POST() {
   const mockStream = new ReadableStream({
     start(controller) {
       const encoder = new TextEncoder();
@@ -17,9 +17,9 @@ export async function POST(req: Request) {
   return new Response(mockStream);
 }
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// const openai = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
 // export async function POST(req: Request) {
 //   const { messages } = await req.json();

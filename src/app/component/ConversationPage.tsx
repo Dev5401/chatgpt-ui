@@ -1,6 +1,6 @@
 import { ArrowUp } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { calculateWidth } from '../utility/calculateWidth';
+import { calculateWidth } from '../utils/calculateWidth';
 
 type msg = {
   role: string;
