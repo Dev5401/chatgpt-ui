@@ -55,3 +55,9 @@ body {
 .sidebar-chat-title:hover{
   background: #303030;
 }
+
+.user-input-box{
+  white-space: pre-line;
+word-wrap: break-word;
+
+}
