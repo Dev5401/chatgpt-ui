@@ -5,13 +5,6 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgb(33, 33, 33);
@@ -24,7 +17,6 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
 
 .typing-animation::after {
   content: '...';
@@ -44,20 +36,29 @@ body {
   background: #303030;
 }
 
-.bg-sidebar{
+.bg-sidebar {
   background: #171717;
 }
 
-.sidebar-chat-title{
+.sidebar-chat-title {
   cursor: pointer;
+  padding: 8px 12px;
 }
 
-.sidebar-chat-title:hover{
+.sidebar-chat-title:hover {
   background: #303030;
 }
 
-.user-input-box{
+.user-input-box {
   white-space: pre-line;
-word-wrap: break-word;
+  word-wrap: break-word;
+}
 
+/* Flex and Layout Fixes */
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.full-height {
+  height: 100%;
 }

@@ -90,32 +90,38 @@ export const ConversationPage = ({
   input,
   setInput,
 }: ConversationPage) => {
+  const isEmpty = messages.length === 0;
+
   return (
-    <div className='flex flex-col flex-1 h-screen max-w-2xl mx-auto p-4'>
+    <div
+      className={`flex flex-col p-4 transition-all duration-300 ${
+        isEmpty ? 'justify-center items-center h-screen' : 'h-screen max-w-2xl mx-auto'
+      }`}
+    >
       {/* Message list */}
-      <div className='flex-1 overflow-y-auto mb-4 space-y-3'>
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            className={`w-full flex ${
-              msg.role === 'user' ? 'justify-end' : 'justify-start'
-            }`}
-          >
+      {!isEmpty && (
+        <div className='flex-1 overflow-y-auto mb-4 space-y-3 w-full'>
+          {messages.map((msg, i) => (
             <div
-              className={`inline-block rounded-2xl px-5 py-2.5 break-words whitespace-pre-wrap ${
-                msg.role === 'user'
-                  ? 'bg-gray-600 text-white'
-                  : 'bg-gray-200 text-black'
+              key={i}
+              className={`w-full flex ${
+                msg.role === 'user' ? 'justify-end' : 'justify-start'
               }`}
-              style={{
-                maxWidth: '80%',
-              }}
             >
-              <ReactMarkdown>{msg.content}</ReactMarkdown>
+              <div
+                className={`inline-block rounded-2xl px-5 py-2.5 break-words whitespace-pre-wrap ${
+                  msg.role === 'user'
+                    ? 'bg-gray-600 text-white'
+                    : 'bg-gray-200 text-black'
+                }`}
+                style={{ maxWidth: '80%' }}
+              >
+                <ReactMarkdown>{msg.content}</ReactMarkdown>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Prompt headline */}
       <div className='flex items-center justify-center p-4 text-3xl font-bold'>
@@ -123,7 +129,7 @@ export const ConversationPage = ({
       </div>
 
       {/* Input box */}
-      <div className='bg-chat-box flex-col p-4 rounded-3xl'>
+      <div className='bg-chat-box p-4 rounded-3xl w-full max-w-2xl'>
         <form onSubmit={handleSubmit} className='flex gap-2'>
           <input
             type='text'
@@ -142,9 +148,11 @@ export const ConversationPage = ({
       </div>
 
       {/* Footer */}
-      <div className='flex items-center justify-center text-sm pt-4'>
-        ChatGPT can make mistakes. Check important info.
-      </div>
+      {!isEmpty && (
+        <div className='flex items-center justify-center text-sm pt-4'>
+          ChatGPT can make mistakes. Check important info.
+        </div>
+      )}
     </div>
   );
 };
