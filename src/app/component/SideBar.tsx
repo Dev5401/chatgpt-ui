@@ -29,18 +29,20 @@ export const SideBar = ({
         sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'
       }`}
     >
-      <div className='flex items-center justify-between p-4 border-b border-gray-700'>
-        <button
-          onClick={() => setSidebarOpen(false)}
-          className='text-white cursor-pointer'
-        >
-          <PanelLeft className='w-5 h-5' />
-        </button>
-        {sidebarOpen && <span className='text-lg font-semibold'>ChatGPT</span>}
-      </div>
+      {sidebarOpen && (
+        <div className='flex items-center justify-between p-4'>
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className='text-white cursor-pointer'
+          >
+            <PanelLeft className='w-5 h-5' />
+          </button>
+          <span className='text-lg font-semibold'>ChatGPT</span>
+        </div>
+      )}
 
       {sidebarOpen && (
-        <div className='p-4 space-y-4'>
+        <div className='p-4 space-y-4 whitespace-nowrap overflow-hidden text-ellipsis'>
           <button
             onClick={() => {
               const newChat = {
@@ -60,9 +62,7 @@ export const SideBar = ({
               <div
                 key={chat.id}
                 className={`p-2 rounded cursor-pointer ${
-                  activeChat === chat.id
-                    ? 'sidebar-chat-title'
-                    : 'hover:bg-hovergrey'
+                  activeChat === chat.id ? 'sidebar-chat-title' : 'hover-class'
                 }`}
                 onClick={() => setActiveChat(chat.id)}
               >

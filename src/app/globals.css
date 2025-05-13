@@ -66,3 +66,7 @@ body {
 .full-height {
   height: 100%;
 }
+
+.hover-class:hover {
+  background-color: #303030;
+}
