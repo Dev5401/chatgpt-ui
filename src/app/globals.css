@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -24,8 +24,13 @@ body {
 }
 
 @keyframes typing {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .bg-user {
@@ -42,7 +47,7 @@ body {
 
 .sidebar-chat-title {
   cursor: pointer;
-  padding: 8px 12px;
+  background: #303030;
 }
 
 .sidebar-chat-title:hover {
@@ -54,7 +59,6 @@ body {
   word-wrap: break-word;
 }
 
-/* Flex and Layout Fixes */
 .flex-shrink-0 {
   flex-shrink: 0;
 }
