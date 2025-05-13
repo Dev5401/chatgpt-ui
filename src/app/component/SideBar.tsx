@@ -1,7 +1,7 @@
 'use client';
 import { PanelLeft } from 'lucide-react';
 
-type chat = {
+type Chat = {
   id: number;
   title: string;
 };
@@ -9,7 +9,7 @@ type chat = {
 type SideBarProps = {
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
-  chats: chat[];
+  chats: Chat[];
   setChats: React.Dispatch<React.SetStateAction<chat[]>>;
   activeChat: number | null;
   setActiveChat: (id: number | null) => void;
