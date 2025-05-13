@@ -18,7 +18,7 @@ A sleek and responsive user interface for interacting with OpenAI's ChatGPT API.
 
 ## 📸 Demo
 
-![ChatGPT-UI](<Screenshot 2025-05-09 at 4.05.52 PM.png>)
+![ChatGPT-UI](demo.png)
 
 ---
 

@@ -16,7 +16,7 @@ export default function Chat() {
     { id: 1, title: 'Explain quantum computing' },
     { id: 2, title: 'How to make a cake' },
   ]);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeChat, setActiveChat] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -57,40 +57,33 @@ export default function Chat() {
   };
 
   return (
-    <div className='flex h-screen'>
-      {sidebarOpen ? (
-        <SideBar
-          sidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-          chats={chats}
-          setChats={setChats}
-          activeChat={activeChat}
-          setActiveChat={setActiveChat}
-        />
-      ) : (
-        <div className='p-4'>
-          <PanelLeft
-            className='w-7 h-7 cursor-pointer'
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-          />
-        </div>
+    <div className='flex h-screen relative'>
+      <SideBar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        chats={chats}
+        setChats={setChats}
+        activeChat={activeChat}
+        setActiveChat={setActiveChat}
+      />
+
+      {!sidebarOpen && (
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className='hover-class absolute top-3 left-2 z-30 text-white p-2 rounded-full shadow-md bg-hovergrey transition cursor-pointer'
+        >
+          <PanelLeft className='w-5 h-5' />
+        </button>
       )}
 
-      <ConversationPage
-        messages={messages}
-        handleSubmit={handleSubmit}
-        input={input}
-        setInput={setInput}
-      />
+      <div className='flex-1 transition-all duration-500 ease-in-out'>
+        <ConversationPage
+          messages={messages}
+          handleSubmit={handleSubmit}
+          input={input}
+          setInput={setInput}
+        />
+      </div>
     </div>
   );
 }
-
-{
-  /* <img width="50" height="50" src="https://img.icons8.com/ios/50/chatgpt.png" alt="chatgpt"/> */
-}
-
-// useMemo is used to memoize a value based on dependencies.
-// The function passed to useMemo should not take any arguments because React will call it internally without arguments.
-// You don't need useMemo here because calculateWidth is a simple utility function that doesn't depend on React state or props.
-// You can define it as a regular function instead.

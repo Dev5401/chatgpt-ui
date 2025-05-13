@@ -1,6 +1,5 @@
 import { ArrowUp } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { calculateWidth } from '../utils/calculateWidth';
 
 type msg = {
   role: string;
@@ -20,32 +19,43 @@ export const ConversationPage = ({
   input,
   setInput,
 }: ConversationPage) => {
+  const isEmpty = messages.length === 0;
+
   return (
-    <div className='flex flex-col flex-1 h-screen max-w-2xl mx-auto p-4'>
-      <div className='flex-1 overflow-y-auto mb-4 space-y-3'>
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            style={{
-              width:
-                msg.role === 'user' ? `${calculateWidth(msg.content)}px` : '',
-            }}
-            className={` ${
-              msg.role === 'user'
-                ? 'bg-gray-600 text-white ml-auto rounded-2xl max-w-[70%] bg-user px-5 py-2.5 mr-2'
-                : 'text-white mr-auto ml-2'
-            }`}
-          >
-            <div className='prose'>
-              <ReactMarkdown>{msg.content}</ReactMarkdown>
+    <div
+      className={`flex flex-col p-4 transition-all duration-300 ${
+        isEmpty
+          ? 'justify-center items-center h-screen'
+          : 'h-screen max-w-2xl mx-auto'
+      }`}
+    >
+      {!isEmpty && (
+        <div className='flex-1 overflow-y-auto mb-4 space-y-3 w-full'>
+          {messages.map((msg, i) => (
+            <div
+              key={i}
+              className={`w-full flex ${
+                msg.role === 'user' ? 'justify-end' : 'justify-start'
+              }`}
+            >
+              <div
+                className={`inline-block rounded-2xl px-5 py-2.5 break-words whitespace-pre-wrap ${
+                  msg.role === 'user' ? 'bg-user' : 'text-white'
+                }`}
+                style={{ maxWidth: '80%' }}
+              >
+                <ReactMarkdown>{msg.content}</ReactMarkdown>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
+
       <div className='flex items-center justify-center p-4 text-3xl font-bold'>
         What can I help with?
       </div>
-      <div className='bg-chat-box flex-col p-4 rounded-3xl'>
+
+      <div className='bg-chat-box p-4 rounded-3xl w-full max-w-2xl'>
         <form onSubmit={handleSubmit} className='flex gap-2'>
           <input
             type='text'
@@ -62,9 +72,12 @@ export const ConversationPage = ({
           </button>
         </form>
       </div>
-      <div className='flex items-center justify-center text-sm pt-4'>
-        ChatGPT can make mistakes. Check important info.
-      </div>
+
+      {!isEmpty && (
+        <div className='flex items-center justify-center text-sm pt-4'>
+          ChatGPT can make mistakes. Check important info.
+        </div>
+      )}
     </div>
   );
 };
