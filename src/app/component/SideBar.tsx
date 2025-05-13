@@ -10,7 +10,7 @@ type SideBarProps = {
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
   chats: Chat[];
-  setChats: React.Dispatch<React.SetStateAction<chat[]>>;
+  setChats: React.Dispatch<React.SetStateAction<Chat[]>>;
   activeChat: number | null;
   setActiveChat: (id: number | null) => void;
 };
