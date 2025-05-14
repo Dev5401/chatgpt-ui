@@ -1,7 +1,7 @@
 'use client';
 import { PanelLeft } from 'lucide-react';
 
-type Chat = {
+export type Chat = {
   id: number;
   title: string;
 };

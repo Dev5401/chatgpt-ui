@@ -1,5 +1,6 @@
 import { SideBar } from '../component/SideBar';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { Chat } from '../component/SideBar';
 
 describe('Sidebar', () => {
   beforeEach(() => jest.clearAllMocks());
@@ -104,5 +105,59 @@ describe('Sidebar', () => {
     fireEvent.click(secondChatItem);
 
     expect(mockSetActiveChat).toHaveBeenCalledWith(2);
+  });
+
+  it('Should add a new chat and set it as active when "+ New Chat" is clicked', () => {
+    const mockSetChats = jest.fn();
+    const mockSetActiveChat = jest.fn();
+
+    render(
+      <SideBar
+        sidebarOpen={true}
+        setSidebarOpen={jest.fn()}
+        chats={[]}
+        setChats={mockSetChats}
+        activeChat={null}
+        setActiveChat={mockSetActiveChat}
+      />
+    );
+
+    const newChatButton = screen.getByText('+ New Chat');
+    fireEvent.click(newChatButton);
+
+    expect(mockSetChats).toHaveBeenCalledWith(expect.any(Function));
+
+    const fakePrevChats: Chat[] = [];
+    const updaterFn = mockSetChats.mock.calls[0][0];
+    const newChatList = updaterFn(fakePrevChats);
+
+    expect(newChatList).toEqual([{ id: 1, title: 'New Chat 1' }]);
+
+    expect(mockSetActiveChat).toHaveBeenCalledWith(1);
+  });
+
+  it('Should apply correct CSS class to active chat', () => {
+    const chats = [
+      { id: 1, title: 'Explain quantum computing' },
+      { id: 2, title: 'How to make a cake' },
+    ];
+
+    render(
+      <SideBar
+        sidebarOpen={true}
+        setSidebarOpen={jest.fn()}
+        chats={chats}
+        setChats={jest.fn()}
+        activeChat={2}
+        setActiveChat={jest.fn()}
+      />
+    );
+
+    const activeChatElement = screen.getByText('How to make a cake');
+
+    expect(activeChatElement.className).toContain('sidebar-chat-title');
+
+    const inactiveChatElement = screen.getByText('Explain quantum computing');
+    expect(inactiveChatElement.className).not.toContain('sidebar-chat-title');
   });
 });
