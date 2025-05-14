@@ -57,7 +57,7 @@ export default function Chat() {
   };
 
   return (
-    <div className='flex h-screen relative'>
+    <div className="flex h-screen relative">
       <SideBar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
@@ -70,13 +70,13 @@ export default function Chat() {
       {!sidebarOpen && (
         <button
           onClick={() => setSidebarOpen(true)}
-          className='hover-class absolute top-3 left-2 z-30 text-white p-2 rounded-full shadow-md bg-hovergrey transition cursor-pointer'
+          className="hover-class absolute top-3 left-2 z-30 text-white p-2 rounded-full shadow-md bg-hovergrey transition cursor-pointer"
         >
-          <PanelLeft className='w-5 h-5' />
+          <PanelLeft className="w-5 h-5" />
         </button>
       )}
 
-      <div className='flex-1 transition-all duration-500 ease-in-out'>
+      <div className="flex-1 transition-all duration-500 ease-in-out">
         <ConversationPage
           messages={messages}
           handleSubmit={handleSubmit}

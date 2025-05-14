@@ -3,9 +3,7 @@ export async function POST() {
     start(controller) {
       const encoder = new TextEncoder();
       controller.enqueue(
-        encoder.encode(
-          'Hello! This is a mock AI response. Hello! This is a mock AI response.'
-        )
+        encoder.encode('Hello! This is a mock AI response. Hello! This is a mock AI response.')
       );
       controller.enqueue(encoder.encode('(Your OpenAI quota is exhausted.)'));
       controller.close();
