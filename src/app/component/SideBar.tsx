@@ -1,7 +1,7 @@
 'use client';
 import { PanelLeft } from 'lucide-react';
 
-type Chat = {
+export type Chat = {
   id: number;
   title: string;
 };
@@ -34,6 +34,7 @@ export const SideBar = ({
           <button
             onClick={() => setSidebarOpen(false)}
             className='text-white cursor-pointer'
+            data-testid='sidebar-close-button'
           >
             <PanelLeft className='w-5 h-5' />
           </button>
@@ -64,6 +65,7 @@ export const SideBar = ({
                 className={`p-2 rounded cursor-pointer ${
                   activeChat === chat.id ? 'sidebar-chat-title' : 'hover-class'
                 }`}
+                data-testid={`chat-item-${chat.id}`}
                 onClick={() => setActiveChat(chat.id)}
               >
                 {chat.title}
