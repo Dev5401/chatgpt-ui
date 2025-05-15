@@ -30,20 +30,20 @@ export const SideBar = ({
       }`}
     >
       {sidebarOpen && (
-        <div className='flex items-center justify-between p-4'>
+        <div className="flex items-center justify-between p-4">
           <button
             onClick={() => setSidebarOpen(false)}
-            className='text-white cursor-pointer'
-            data-testid='sidebar-close-button'
+            className="text-white cursor-pointer"
+            data-testid="sidebar-close-button"
           >
-            <PanelLeft className='w-5 h-5' />
+            <PanelLeft className="w-5 h-5" />
           </button>
-          <span className='text-lg font-semibold'>ChatGPT</span>
+          <span className="text-lg font-semibold">ChatGPT</span>
         </div>
       )}
 
       {sidebarOpen && (
-        <div className='p-4 space-y-4 whitespace-nowrap overflow-hidden text-ellipsis'>
+        <div className="p-4 space-y-4 whitespace-nowrap overflow-hidden text-ellipsis">
           <button
             onClick={() => {
               const newChat = {
@@ -53,12 +53,12 @@ export const SideBar = ({
               setChats((prev) => [...prev, newChat]);
               setActiveChat(newChat.id);
             }}
-            className='w-full sidebar-chat-title p-2 rounded'
+            className="w-full sidebar-chat-title p-2 rounded"
           >
             + New Chat
           </button>
 
-          <div className='space-y-2'>
+          <div className="space-y-2">
             {chats.map((chat) => (
               <div
                 key={chat.id}
