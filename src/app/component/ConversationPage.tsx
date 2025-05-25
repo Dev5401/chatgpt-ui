@@ -34,6 +34,7 @@ export const ConversationPage = ({ messages, handleSubmit, input, setInput }: Co
                   msg.role === 'user' ? 'bg-user' : 'text-white'
                 }`}
                 style={{ maxWidth: '80%' }}
+                data-testid={`msg-${msg.role}`}
               >
                 <ReactMarkdown>{msg.content}</ReactMarkdown>
               </div>
