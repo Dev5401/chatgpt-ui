@@ -19,8 +19,11 @@ export const ConversationPage = ({ messages, handleSubmit, input, setInput }: Co
   return (
     <div
       className={`flex flex-col p-4 transition-all duration-300 ${
-        isEmpty ? 'justify-center items-center h-screen' : 'h-screen max-w-2xl mx-auto'
+        isEmpty
+          ? 'justify-center items-center h-screen input-box-center'
+          : 'h-screen max-w-2xl mx-auto input-box-bottom'
       }`}
+      data-testid={isEmpty ? 'input-box-center' : 'input-box-bottom'}
     >
       {!isEmpty && (
         <div className="flex-1 overflow-y-auto mb-4 space-y-3 w-full">
@@ -48,13 +51,14 @@ export const ConversationPage = ({ messages, handleSubmit, input, setInput }: Co
       </div>
 
       <div className="bg-chat-box p-4 rounded-3xl w-full max-w-2xl">
-        <form onSubmit={handleSubmit} className="flex gap-2">
+        <form onSubmit={handleSubmit} className="flex gap-2" data-testid="conversation-form">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="flex-1 p-2 outline-none"
             placeholder="Ask anything"
+            data-testid="user-input"
           />
           <button
             type="submit"
