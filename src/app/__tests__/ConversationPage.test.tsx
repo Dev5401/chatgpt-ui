@@ -2,7 +2,9 @@ import { ConversationPage } from '../component/ConversationPage';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 
 jest.mock('react-markdown', () => {
-  return ({ children }: any) => <div>{children}</div>;
+  const MockReactMarkdown = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+  MockReactMarkdown.displayName = 'MockReactMarkdown';
+  return MockReactMarkdown;
 });
 
 describe('CoversationPage', () => {
